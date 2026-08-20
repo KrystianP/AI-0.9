@@ -188,4 +188,60 @@ wielokrokowe.
 - Bezpieczna automatyzacja jednego własnego procesu z ręcznym zatwierdzeniem
   działań wysokiego ryzyka.
 
+## 15. Praca agentów na różnych gałęziach Git
+
+### Po co używać wielu gałęzi
+
+- Izolowanie osobnych zadań, eksperymentów i zmian przygotowywanych przez
+  różnych agentów.
+- Umożliwienie kilku agentom pracy równolegle bez nadpisywania sobie plików.
+- Zachowanie stabilnej gałęzi głównej, gdy agent dopiero bada problem albo
+  generuje duży zakres zmian.
+- Łatwe porównanie, odrzucenie lub zaakceptowanie wyniku pracy agenta.
+- Rozdzielenie pracy na funkcję, poprawkę błędu, testy, refaktoryzację i
+  eksperyment z nowym narzędziem AI.
+
+### Kiedy zakładać osobną gałąź
+
+- Gdy zadanie zmienia kod, konfigurację lub strukturę projektu.
+- Gdy agent ma działać autonomicznie albo wykonać wiele kroków.
+- Gdy zadanie jest eksperymentem i nie wiadomo jeszcze, czy rozwiązanie będzie
+  dobre.
+- Gdy kilka agentów ma pracować równocześnie nad różnymi częściami aplikacji.
+- Gdy zmiana powinna przejść osobny review i testy przed połączeniem z główną
+  gałęzią.
+
+### Kiedy gałąź nie jest potrzebna
+
+- Przy samym czytaniu repozytorium, analizie, wyszukiwaniu informacji lub
+  przygotowaniu planu.
+- Przy małej, oczywistej zmianie, jeśli pracujemy sami i mamy aktualny stan
+  repozytorium.
+- Gdy zadanie dotyczy wyłącznie lokalnego eksperymentu, który nie ma zostać
+  zapisany w projekcie.
+
+### Workflow Warp + agenci + Git
+
+- Jeden agent lub zadanie = jedna jasno nazwana gałąź.
+- Przed startem: sprawdzenie czystego stanu, aktualnej gałęzi i synchronizacji
+  z repozytorium.
+- Agent pracuje wyłącznie w swojej gałęzi i nie łączy zmian samodzielnie z
+  główną gałęzią bez zatwierdzenia.
+- Po zakończeniu: diff, testy, `git diff --check`, przegląd zmian i dopiero
+  potem merge albo pull request.
+- Przy wielu agentach: osobne gałęzie, osobne zakresy plików i jasna kolejność
+  łączenia wyników.
+- Nauka rozwiązywania konfliktów, rebase, cherry-pick, wycofywania zmian oraz
+  odzyskiwania pracy agenta po błędzie.
+
+### Tematy do przećwiczenia w Warp
+
+- Uruchomienie dwóch agentów na dwóch gałęziach i bezpieczne połączenie ich
+  wyników.
+- Agent implementujący funkcję, drugi agent piszący testy, a trzeci wykonujący
+  review — każdy na właściwie odizolowanym zakresie pracy.
+- Zatrzymanie nieudanego eksperymentu agenta bez naruszania głównej gałęzi.
+- Konflikt zmian wygenerowanych przez dwóch agentów i jego ręczne rozwiązanie.
+- Porównanie pracy wielu gałęzi z pracą wielu agentów w jednym katalogu.
+
   
